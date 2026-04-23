@@ -38,7 +38,7 @@ jobs:
         run: dotnet build test/Soenneker.Stripe.Extensions.Decimals.Tests/Soenneker.Stripe.Extensions.Decimals.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Stripe.Extensions.Decimals.Tests/Soenneker.Stripe.Extensions.Decimals.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
+        run: dotnet test --project test/Soenneker.Stripe.Extensions.Decimals.Tests/Soenneker.Stripe.Extensions.Decimals.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
 
       - name: Pack
         run: dotnet pack src/Soenneker.Stripe.Extensions.Decimals/Soenneker.Stripe.Extensions.Decimals.csproj --configuration Release --no-build --no-restore --output . --verbosity minimal
