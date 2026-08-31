@@ -52,13 +52,12 @@ public static class StripeDecimalExtension
     /// <returns>The net amount received after deducting Stripe fees.</returns>
     public static decimal CalculateNetAfterStripeFee(this decimal amount, bool ach = false)
     {
-        amount.CalculateStripeFee(ach); // triggers validation
         decimal fee = amount.CalculateStripeFee(ach);
         return (amount - fee).RoundStripeCurrency();
     }
 
     /// <summary>
-    /// Rounds the decimal value using Stripe’s rounding rules (two decimal places, midpoint away from zero).
+    /// Rounds the decimal value to two places using midpoint-away-from-zero rounding.
     /// </summary>
     /// <param name="value">The value to round.</param>
     /// <returns>The rounded value.</returns>
@@ -84,9 +83,9 @@ public static class StripeDecimalExtension
 
         if (ach)
         {
-            decimal percentFee = netAmount * percentage;
+            decimal netAmountAtFeeCap = StripeConstants.AchMaxFee / percentage - StripeConstants.AchMaxFee;
 
-            gross = percentFee >= StripeConstants.AchMaxFee
+            gross = netAmount >= netAmountAtFeeCap
                 ? netAmount + StripeConstants.AchMaxFee
                 : netAmount / (1 - percentage);
         }
