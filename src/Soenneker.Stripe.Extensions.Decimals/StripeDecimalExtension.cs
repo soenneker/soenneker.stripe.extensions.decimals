@@ -150,7 +150,10 @@ public static class StripeDecimalExtension
     /// <returns>A tuple containing the total fee, percentage-based portion, and fixed portion.</returns>
     public static (decimal Total, decimal PercentagePortion, decimal FixedPortion) CalculateStripeFeeBreakdown(this decimal amount, bool ach = false)
     {
-        amount.CalculateStripeFee(ach); // validates range
+        if (ach)
+            EnsureAchInRange(amount, nameof(amount));
+        else
+            EnsureCardInRange(amount, nameof(amount));
 
         decimal roundedAmount = amount.ToCurrency();
 
