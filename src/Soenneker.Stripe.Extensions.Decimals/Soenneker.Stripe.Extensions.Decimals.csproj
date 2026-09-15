@@ -44,7 +44,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Soenneker.Extensions.Decimal" Version="4.0.625" />
+      <PackageReference Include="Soenneker.Extensions.Decimal" Version="4.0.626" />
       <PackageReference Include="Soenneker.Stripe.Constants" Version="4.0.26" />
     </ItemGroup>
 </Project>
