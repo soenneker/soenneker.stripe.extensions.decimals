@@ -15,4 +15,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\Soenneker.Stripe.Extensions.Decimals\Soenneker.Stripe.Extensions.Decimals.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
+    </ItemGroup>
 </Project>
